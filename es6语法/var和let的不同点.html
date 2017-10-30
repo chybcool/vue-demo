@@ -42,13 +42,39 @@
 
 
 
-		btn=document.querySelectorAll("button");
-		for (var i = 0; i < btn.length; i++) {
+
+
+		//let作用域是独立的
+		// var btn=document.querySelectorAll("button");
+		/*for (var i = 0; i < btn.length; i++) {
 			btn[i].onclick=function(){
 				alert("点击了第"+i+"个按钮");
 			}
-		}
+		}*/ //一直输出点击了第5个按钮，因为作用域问题
+		/*for (var i = 0; i < btn.length; i++) {
+			(function(i){
+				btn[i].onclick=function(){
+					alert("点击了第"+i+"个按钮");
+				}
+			})(i)
+		} //利用闭包*/
 
+	/*	let btn=document.querySelectorAll("button");
+		for (let i = 0; i < btn.length; i++) {
+			btn[i].onclick=function(){
+				alert("点击了第"+i+"个按钮");
+			}
+		} //let因为作用域问题不会一直输出点击了第5个按钮*/
+
+		/*for (let i = 0; i < 5 ;i++) {
+			let i=20;
+			console.log(i);
+		};*/ //会输出5个20
+
+		// for (var i = 0; i < 5; i++) {
+		// 	var i=20;
+		// 	console.log(i); //会直接输出20
+		// }
 	</script>
 </body>
 </html>
