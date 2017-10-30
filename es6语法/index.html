@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<button>我是按钮0</button>
+	<button>我是按钮1</button>
+	<button>我是按钮2</button>
+	<button>我是按钮3</button>
+	<button>我是按钮4</button>
+	<script type="text/javascript">
+		/*{
+			let str="张三";
+			console.log(str);
+		}
+			console.log(str);//let作用域只局限于当前代码块*/
+
+
+
+
+/*		{
+			console.log(str); //报错未定义
+			let str="张三";//let声明不能提升作用域
+		}
+		{
+			console.log(str);
+			var str="张三"；//提示undefined，不是报错；let声明不能提升作用域
+		}*/
+
+
+
+
+
+	/*	{
+			let str="张三";
+			let str="张四";
+			console.log(str);//var 同一个变量声明两次是重新赋值；let声明两次则会报错
+		}*/
+
+
+
+
+		btn=document.querySelectorAll("button");
+		for (var i = 0; i < btn.length; i++) {
+			btn[i].onclick=function(){
+				alert("点击了第"+i+"个按钮");
+			}
+		}
+
+	</script>
+</body>
+</html>
