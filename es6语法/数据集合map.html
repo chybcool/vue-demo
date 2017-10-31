@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//let obj={'name':'jackma'};创建对象的两张方式
+		/*let map=new Map([
+			['name','jackma'],
+			['sex','man'],
+			['age','18'],
+			['age','18']
+			]);*/  //map和set一样，有多个重复的值时直接去除
+		let map=new Map([
+			['name','jackma'],
+			['sex','man'],
+			['age','18']
+			]);
+		//console.log(map.size);//输出对象的数量
+		map.set(['daidai'],'消化');//往对象后追加value
+		//map.clear();//清空对象
+		// console.log(map);
+		// console.log(map.get('name'));//获取key对应的value
+		// console.log(map.delete('age'));//删除value
+		//console.log(map.has('daidai'));//查看对象里面是否包含该value
+		//console.log(map);
+		// console.log(map.keys());//获取key
+		// console.log(map.values());//获取value
+		// console.log(map.entries());//获取所有key和value
+		map.forEach(function(index,value) {
+			console.log(index+":"+value);
+		});//对象的遍历
+	</script>
+</body>
+</html>

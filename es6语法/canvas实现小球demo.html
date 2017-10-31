@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='underscore.js'></script>
+	<style type="text/css">
+		body{
+			text-align: center;
+		}
+		#canvas{
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='canvas'></canvas>
+</body>
+	<script type="text/javascript">
+		let canvas=document.getElementById('canvas');
+		let ctx=canvas.getContext('2d');
+
+		canvas.width=1000;
+		canvas.height=400;
+		canvas.style.backgroundColor='black';
+
+		class Ball{
+			constructor(x,y,color){
+				this.x=x;
+				this.y=y;
+				this.color=color;
+				this.r=40;
+			}
+			reader(){
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+				ctx.fillStyle=this.color;
+				ctx.fill();
+				ctx.restore();
+			}
+		}
+		let ball=new Ball(40,40,'red');
+		ball.reader();
+	</script>
+</html>
