@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//形参设置默认值
+/*		function sum(num1=10,num2=10){      //后面直接写值是为了防止没有参数传进来报错
+			console.log(num1*num2);
+		}
+		sum();*/
+
+		//利用延展操作符，当不确定参数数量时
+/*		function sum(...nums){
+			let result=0;
+			for (let values of nums) {
+				result+=values;
+			}
+			console.log(result);
+		}
+		sum(1,2,3,4);*/
+
+
+		//当传递多个不同类型的参数时
+		function sum(name,sex,...nums){
+			console.log(name);
+			console.log(sex);
+			let result=0;
+			for (let values of nums) {
+				result+=values;
+			}
+			console.log(result);
+		}
+		sum('daidai','nan',1,2,3,4);
+	</script>
+</body>
+</html>
