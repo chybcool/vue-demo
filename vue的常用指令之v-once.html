@@ -7,18 +7,17 @@
 </head>
 <body>
 	<div id="app">
-		<input type="text" name="" v-model="score">
-		<p v-if="score>=90">优秀</p>
-		<p v-else-if="score>=80">普通</p>
-		<p v-else-if="score>=60">及格</p>
-		<p v-else>不及格</p>
+		<p v-once>最初的值是：{{message}}</p>
+		<!--加上v-once这个值就不会跟着修改了-->
+		<p>这个值是跟着修改的：{{message}}</p>
+		<input type="text" name="" v-model="message">
 	</div>
 </body>
 	<script type="text/javascript">
-		new Vue({
+		let vm=new Vue({
 			el:"#app",
 			data:{
-				score:90
+				message:"hello world"
 			}
 		});
 	</script>

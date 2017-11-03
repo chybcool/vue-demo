@@ -7,18 +7,16 @@
 </head>
 <body>
 	<div id="app">
-		<input type="text" name="" v-model="score">
-		<p v-if="score>=90">优秀</p>
-		<p v-else-if="score>=80">普通</p>
-		<p v-else-if="score>=60">及格</p>
-		<p v-else>不及格</p>
+		<p>{{message}}</p>
+		<input type="text" name="" v-model="message">
+		<!--数据绑定，同步输出-->
 	</div>
 </body>
 	<script type="text/javascript">
-		new Vue({
+		let vm=new Vue({
 			el:"#app",
 			data:{
-				score:90
+				message:"hello world"
 			}
 		});
 	</script>

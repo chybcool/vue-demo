@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+<!-- 		<p v-model='height'>我的身高是：{{height}}</p>
+		<input type="text" name="" v-model="height">
+		<p v-if="height>1.4">我的身高很高</p>
+		<!--v-if，v-show条件语句，不满足条件时会消失；v-show使用的是css隐藏-->
+
+		<input type="text" name="" v-model="height">
+		<p v-if="height < 1.7">小民身高不足1.7</p>
+		<p v-else>小明个子很高</p>
+	</div>
+</body>
+	<script type="text/javascript">
+		let vm=new Vue({
+			el:"#app",
+			data:{
+				message:"hello world",
+				height:177
+			}
+		});
+	</script>
+</html>
