@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-for="(score,index) in scores">{{score+":"+index}}</p>
+		<p v-for="obj in object">{{obj}}</p>
+		<p v-for="num in nums">{{num}}</p>
+	</div>
+</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				scores:[1,2,4,634,5745,56856,3,7,8,4,73,1], //遍历里面的数据
+				object:{name:"daidai",age:18,sex:"man"},
+				nums:'1512849081240912'
+			}
+		})
+	</script>
+</html>

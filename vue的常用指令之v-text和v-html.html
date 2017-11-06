@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{msg}}66666</p>
+		<p v-text="msg">66666</p> <!--v-text会覆盖里面的内容-->
+		<p v-html="html"></p><!--v-html-->
+	</div>
+</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				msg:"hello world",
+				html:"<input type='date' />"
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<table>
+			<thead>
+				<tr>姓名</tr>
+				<tr>年龄</tr>
+				<tr>性别</tr>
+			</thead>
+			<tbody>
+				<tr v-for="p in persons">
+					<td>{{p.name}}</td>
+					<td>{{p.age}}</td>
+					<td>{{p.sex}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				persons:[
+					{name:"daidai",age:18,sex:"man"},
+					{name:"sbs",age:28,sex:"gg"},
+					{name:"asb",age:38,sex:"mm"},
+					{name:"asddddd",age:18,sex:"man"}
+				]
+			}
+		})
+	</script>
+</html>

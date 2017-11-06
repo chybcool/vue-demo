@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{msg}}</p>
+		<button v-on:click="msg='hello world'">点击改变文字</button>
+		<button @click="onclickalert()" :style="{color:color}">点击弹窗</button>
+	</div>
+</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				msg:"今天天气非常好",
+				color:"red"
+			},
+			methods:{
+				onclickalert(){
+					alert(1);
+					this.msg="我也要来改变文字";
+				}
+			}
+		})
+	</script>
+</html>

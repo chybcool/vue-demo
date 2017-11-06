@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+	<style type="text/css">
+		.active{
+			background-color: red;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<p v-for="(colledge,index) in colledges" v-bind:class="index==classnum?'active':''">{{colledge}}</p><!-- 动态的绑定class -->
+		<p v-bind:style="{color:colornum}">{{meg}}</p>
+	</div>
+</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				colledges:[
+								"html学院",
+								"ios学院",
+								"android学院",
+								"c++学院",
+								"c学院"
+							],
+				meg:"今天天气非常好",
+				classnum:3,
+				colornum:"yellow"
+			}
+		})
+	</script>
+</html>
