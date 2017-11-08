@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-date></my-date>
+	</div>
+</body>
+<!-- 	<script type="text/javascript">
+	let file=Vue.extend({
+		template:`
+			<div>
+			<p>hello world</p>
+			</div>
+		`
+	})
+	let vm=new Vue({
+		el:"#app",
+		components:{
+			"my-date":file
+		}
+	})
+</script> -->
+		<script type="text/javascript">
+		let vm=new Vue({
+			el:"#app",
+			components:{
+				"my-date":{
+			template:`
+				<div>
+				<p>hello world</p>
+				<input type="color" />
+				</div>
+			`
+		}
+			}
+		})
+	</script>
+</html>

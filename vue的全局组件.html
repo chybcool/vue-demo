@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-template></my-template>
+	</div>
+</body>
+	<script type="text/javascript">
+		//1.创建组件构造器
+			let file=Vue.extend({
+				template:`
+					<div style='color:red'>
+					<p>hello world</p>
+					<input type="date" />
+					</div>
+				`
+			})
+		//2.注册全局组件
+			Vue.component('my-template',file); //前面是自定义的组件名称；后面是创建的组件名称
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				name:'asb'
+			}
+		})
+	</script>
+		<script type="text/javascript">
+		//可以这么简写
+			Vue.component('my-template',{
+				template:`
+					<div style='color:red'>
+					<p>hello world</p>
+					<input type="date" />
+					</div>
+				`
+			}); //前面是自定义的组件名称；后面是创建的组件名称
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				name:'asb'
+			}
+		})
+	</script>
+</html>

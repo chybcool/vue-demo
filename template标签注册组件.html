@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-div></my-div>
+	</div>
+
+	<!--下面是可以自定义的模版，利用id来关联.只能在同一个div下面-->
+	<template id="my-div">
+		<div>
+			<p>hello world</p>
+			<img src="dd.jpg">
+		</div>
+	</template>
+</body>
+	<script type="text/javascript">
+		//实例化组件
+		Vue.component('my-div',{
+			template:"#my-div"
+		})
+		new Vue({
+			el:"#app"
+		})
+	</script>
+</html>
