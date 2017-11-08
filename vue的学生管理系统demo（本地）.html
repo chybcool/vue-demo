@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+	<style type="text/css">
+		div{
+			margin-top:15px;
+		}
+		td{
+			padding-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+	<fieldset>
+		<legend>学生管理系统</legend>
+		<div>
+			<span>姓名</span>
+			<input type="text" name="" v-model="newdata.name">
+		</div>
+		<div>
+			<span>年龄</span>
+			<input type="text" name="" v-model="newdata.age">
+		</div>
+		<div>
+			<span>性别</span>
+			<select v-model="newdata.sex">
+				<option value="男">男</option>
+				<option value="女">女</option>
+			</select>
+		</div>
+		<div>
+			<span>手机</span>
+			<input type="text" name="" v-model="newdata.tell">
+		</div>
+		<button @click="cretenewdata()">创建新用户</button>
+	</fieldset>
+	<table>
+		<tr>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>性别</td>
+			<td>手机</td>
+			<td>操作</td>
+		</tr>
+		<tr v-for="(person,index) in persons">
+			<td>{{person.name}}</td>
+			<td>{{person.age}}</td>
+			<td>{{person.sex}}</td>
+			<td>{{person.tell}}</td>
+			<td><button @click="deletedata(index)">删除</button></td>
+		</tr>
+	</table>
+	</div>
+</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				persons:[
+				{name:"张三",age:"23",sex:"man",tell:1383838438},
+				{name:"张四",age:"24",sex:"woman",tell:13838384335328},
+				{name:"张五",age:"25",sex:"man",tell:1383838413518},
+				{name:"张六",age:"26",sex:"womanman",tell:138383124124},
+			],
+				newdata:{name:"",age:0,sex:"",tell:""}
+			},
+			methods:{
+				cretenewdata(){
+					this.persons.unshift(this.newdata);//往下面的表格传值
+					this.newdata={}; //清空上面填写的内容
+				},
+				deletedata(index){
+					this.persons.splice(index,1);//删除下面表格的数据
+				}
+			}
+		})
+	</script>
+</html>
