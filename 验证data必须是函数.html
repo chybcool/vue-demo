@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<demo></demo>
+		<demo></demo>
+		<demo></demo>
+		<demo></demo>
+		<demo></demo>
+	</div>
+
+	<template id='demo'>
+		<div>
+			<button @click="counter+=1">点击的次数是:{{counter}}</button>
+		</div>
+	</template>
+</body>
+	<script type="text/javascript">
+		Vue.component("demo",{
+			template:"#demo",
+			data(){
+				return {
+					counter:0
+				}
+			}
+		})
+		new Vue({
+			el:"#app",
+		});
+	</script>
+</html>

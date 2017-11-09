@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<parent :imgmesage='title' :imgsrc="imgsrc"></parent>
+	</div>
+
+
+	<template id="child1">
+		<p>{{my_message}}</p>
+	</template>
+	<template id="child2">
+		<img :src="imgsrc" width="400">
+	</template>
+	<template id="parent">
+		<div>
+			<child1 :my_message='imgmesage'></child1>
+			<child2 :imgsrc='imgsrc'></child2>
+		</div>
+	</template>
+</body>
+	<script type="text/javascript">
+		//创建子组件
+		let child1=Vue.extend({
+			template:"#child1",
+			props:["my_message"]
+		})
+		let child2=Vue.extend({
+			template:"#child2",
+			props:['imgsrc']
+		})
+		//创建父组件
+		Vue.component("parent",{
+			props:['imgmesage','imgsrc'],
+			components:{
+				"child1":child1,
+				"child2":child2
+			},
+			template:"#parent"
+		})
+		let vm=new Vue({
+			el:"#app",
+			data:{
+				title:"今天1天气怎么样",
+				imgsrc:"dd.jpg"
+			}
+		})
+	</script>
+</html>

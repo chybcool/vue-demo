@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<demo message='hello' imgsrc='dd.jpg'></demo>
+		<demo message='呆呆' imgsrc='code.jpeg'></demo>
+	</div>
+	<template id="demo">
+		<div>
+			<p>{{message}}</p>
+			<img :src="imgsrc" style="width: 300px">
+		</div>
+	</template>
+</body>
+	<script type="text/javascript">
+		Vue.component("demo",{
+			template:"#demo",
+			props:['message','imgsrc']
+		})
+		new Vue({
+			el:"#app",
+		})
+	</script>
+</html>
