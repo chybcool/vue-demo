@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<test @total='alltotal()'></test>
+		<test @total='alltotal()'></test>
+		<test @total='alltotal()'></test>
+		<test @total='alltotal()'></test>
+		<test @total='alltotal()'></test>
+		<test @total='alltotal()'></test>
+		<p>一共点击了{{totalclick}}次</p>
+	</div>
+	<template id="test">
+		<button @click='total()'>点击了{{counter}}次</button>
+	</template>
+</body>
+	<script type="text/javascript">
+		Vue.component("test",{
+			template:"#test",
+			data(){
+				return {
+					counter:0
+				}
+			},
+			methods:{
+				 total(){
+					this.counter+=1;
+					//通知外界的组件,触发了total方法（此处传字符串）
+					this.$emit('total');
+				}
+			}
+		})
+		new Vue({
+			el:"#app",
+			data:{
+				totalclick:0
+			},
+			methods:{
+				alltotal(){
+					this.totalclick +=1;
+				}
+			}
+		})
+	</script>
+</html>
