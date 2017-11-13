@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='vue.js'></script>
+</head>
+<body>
+	<div id="app">
+		<my-solt>
+			<p slot='ram'>hello world</p><!--位置按照下面模版写的时候的位置；即slot=‘ram’，说明出现在第三个位置-->
+		</my-solt>
+	</div>
+	<template id="my-solt">
+		<div id="main">
+			<slot name='cpu'>这里是cpu</slot>
+			<slot name='gpu'>这里是gpu</slot>
+			<slot name='ram'>这里是ram</slot>
+		</div>
+	</template>
+</body>
+	<script type="text/javascript">
+		Vue.component('my-solt',{
+			template:"#my-solt"
+
+		})
+		new Vue({
+			el:"#app"
+		})
+	</script>
+</html>

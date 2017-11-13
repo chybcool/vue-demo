@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='vue.js'></script>
+	<script src="https://cdn.bootcss.com/vue-router/2.7.0/vue-router.js"></script>
+	<link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div id="app">
+		<div class="row">
+			<div class="col-md-4">
+				<ul class="list-group">
+				  <li class="list-group-item"><router-link to="/html">html学院</router-link></li>
+				  <li class="list-group-item"><router-link to="/java">java学院</router-link></li>
+				  <li class="list-group-item"><router-link to="/php">php学院</router-link></li>
+				</ul>
+			</div>
+			<div class="col-md-8">
+				<!-- 路由出口 -->
+				<!-- 路由匹配到的组件将渲染在这里 -->
+				<router-view></router-view>
+			</div>
+		</div>
+	</div>
+	<template id="html">
+		<div>
+			<h1>只会html就是切图仔吗？</h1>
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510591489313&di=cea8977f68bc1d1ee2e66d52d47ea3f6&imgtype=0&src=http%3A%2F%2Fico.ooopic.com%2Fajax%2Ficonpng%2F%3Fid%3D98963.png">
+		</div>
+	</template>
+	<template id="java">
+		<div>
+			<h1>java大牛</h1>
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510591542706&di=c9f0aeb67c7ceee3d892c7fc52dc13d3&imgtype=0&src=http%3A%2F%2Fa2.att.hudong.com%2F43%2F87%2F20300543669437145007874802107.jpg">
+		</div>
+	</template>
+	<template id="php">
+		<div>
+			<h1>世界上最好的语言</h1>
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510591578972&di=3cbf6f936db88fa5022eec2a5286ccfc&imgtype=0&src=http%3A%2F%2F1.im.guokr.com%2FJX1tOpnac72w27wVY359LJ3tDbxkxrGsZWuM4-PbfBQRAgAALAEAAEpQ.jpg">
+		</div>
+	</template>
+</body>
+	<script type="text/javascript">
+		//1、创建组件
+		const html=Vue.extend({
+			template:'#html'
+		});
+		const java=Vue.extend({
+			template:"#java"
+		});
+		const php=Vue.extend({
+			template:'#php'
+		})
+		//2、定义路由
+		const routes=[
+			{ path: '/html', component: html },
+			{ path: '/java', component: java },
+			{ path: '/php', component: php },
+			//配置根路由，即打开默认显示的
+			{ path:'/',redirect:'/html' }
+		];
+		//3、创建路由实例
+		const router=new VueRouter({
+			routes // （缩写）相当于 routes: routes
+		})
+		//4、创建vue的实例，并挂载
+		new Vue({
+			router
+		}).$mount("#app");
+	</script>
+</html>

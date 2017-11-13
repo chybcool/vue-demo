@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='vue.js'></script>
+</head>
+<body>
+	<div id="app">
+		<my-solt>
+			<slot>测试看看呆呆在不在</slot>
+		</my-solt>
+	</div>
+	<template id='my_solt'>
+		<div>
+			<header>这是卡槽头部</header>
+			<slot>这是卡槽本体</slot>
+			<footer>这是卡槽尾部</footer>
+		</div>
+	</template>
+</body>
+	<script type="text/javascript">
+		Vue.component('my-solt',{
+			template:"#my_solt"
+		})
+		new Vue({
+			el:"#app"
+		})
+	</script>
+</html>
