@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='vue.js'></script>
+	<script type="text/javascript" src='vue-resource.js'></script>
+</head>
+<body>
+	<div id="app"></div>
+</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				result:[],
+			},
+			mounted(){
+				this.getlocaldata();
+			},
+			methods:{
+				getlocaldata(){
+					this.$http.get('data.json').then(response => {
+
+					  // get body data
+					  console.log(response);
+
+					}, response => {
+					  alert('请求出错');
+					});
+				}
+			}
+		})
+
+	</script>
+</html>

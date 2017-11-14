@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='vue.js'></script>
+	<script src="https://cdn.bootcss.com/vue-router/2.7.0/vue-router.js"></script>
+	<link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div id="app">
+		<div class="row">
+			<div class="col-md-4">
+				<ul class="list-group">
+				  <li class="list-group-item"><router-link to="/html">html学院</router-link></li>
+				</ul>
+			</div>
+			<div class="col-md-8">
+				<!-- 路由出口 -->
+				<!-- 路由匹配到的组件将渲染在这里 -->
+				<router-view></router-view>
+			</div>
+		</div>
+	</div>
+	<template id="html">
+		<div>
+			<h1>只会html就是切图仔吗？</h1>
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510591489313&di=cea8977f68bc1d1ee2e66d52d47ea3f6&imgtype=0&src=http%3A%2F%2Fico.ooopic.com%2Fajax%2Ficonpng%2F%3Fid%3D98963.png">
+			<div>
+				<router-link to="/html/basic">基础班</router-link>
+				<router-link to="/html/big">大神班</router-link>
+			</div>
+			<div>
+				<router-view></router-view>
+			</div>
+		</div>
+	</template>
+	<template id="basic">
+		<div>
+			<h3>基础班让你快速入门</h3>
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510671204893&di=1ee259434f8afba670559dba941a6068&imgtype=0&src=http%3A%2F%2Fwww.facang.com%2Fuploads%2Fallimg%2Fc150920%2F1442GG4F4L0-2063c.jpg">
+		</div>
+	</template>
+	<template id='big'>
+		<div>
+			<h3>大神班让你谈笑风生</h3>
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510671804872&di=15dabfe79146d631026a1c77b16654c0&imgtype=0&src=http%3A%2F%2Fnews.eastday.com%2Fepublish%2Fbig5%2Fpaper229%2F1%2Fclass022900006%2Fimage%2Fimg802875_1.jpg">
+		</div>
+	</template>
+</body>
+	<script type="text/javascript">
+		const HTML=Vue.extend({
+			template:"#html"
+		})
+		const BASIC=Vue.extend({
+			template:"#basic"
+		});
+		const BIG=Vue.extend({
+			template:"#big"
+		});
+		const routes=[
+			{
+				path:'/html',
+				component:HTML,
+				children:[
+					{path:'basic',component:BASIC},
+					{path:'big',component:BIG},
+					//配置根路径
+					{path:'',redirect:'basic'}
+				]
+			},
+		];
+		const router=new VueRouter({
+			routes
+		});
+
+		new Vue({
+			router
+		}).$mount("#app");
+	</script>
+</html>
