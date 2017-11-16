@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='js/vue.js'></script>
+	<script type="text/javascript" src="js/vue-resource.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div id="app">
+		<header>购物车</header>
+		<div class="container">
+			<div class="container-header">
+				<div class="container-header">
+					<input type="checkbox" name="" :checked="isselectall" @click='selectall(isselectall)'>
+					<span>全选</span>
+				</div>
+			</div>
+			<div class="shop" v-for='(shop,index) in shoplost'>
+				<div class="shop-left">
+					<input type="checkbox" name="" class="radio" :checked='shop.checked' @click='singelselect(shop)'>
+				</div>
+				<div class="shop-right">
+					<div class="shop-right-left">
+						<img :src="shop.shopimg">
+					</div>
+					<div class="shop-right-right">
+						<div class="shop-name">
+							<span>{{shop.shopname}}</span>
+						</div>
+						<div class="shop-price">
+							<span>{{shop.shopprice | remoneytype(shop.shopprice)}}</span> <!--过滤器的写法-->
+						</div>
+						<div class="add">
+							<span @click='changenum(shop,false)'>-</span>
+							<input type="text" name="" v-model="shop.shopnum">
+							<span @click='changenum(shop,true)'>+</span>
+						</div>
+						<span>单品总价{{shop.shopprice*shop.shopnum |remoneytype(shop.shopprice*shop.shopnum)}}</span>
+					</div>
+				</div>
+			</div>
+			<p>合计{{totalprice | remoneytype(totalprice)}}</p>
+		</div>
+	</div>
+</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				//商品的数据列表
+				shoplost:[],
+				//是否全选
+				isselectall:false,
+				//所有商品的总价
+				totalprice:0
+			},
+			mounted(){
+				this.getlocaldata();
+			},
+			//过滤器
+			filters:{
+				remoneytype(money){
+					return "￥"+money.toFixed(2);
+				}
+			},
+			methods:{
+				//请求本地json数据
+				getlocaldata(){
+					  this.$http.get('data.json').then(response => {
+					  	this.shoplost=response.body.allshops.shoplist;
+					  	console.log(this.shoplost);
+					  }, response => {
+					    alert('请求出错');
+					  });
+				},
+				//增减商品
+				changenum(shop,flag){
+					if (flag) {
+						shop.shopnum+=1;
+					}else{
+						if (shop.shopnum <=1) {
+							shop.shopnum=1;
+						}
+						shop.shopnum -=1;
+					}
+					this.counttotalprice();
+				},
+				//商品的全选和反选
+				selectall(flag){
+						this.isselectall=!flag;
+						//遍历商品数组，给每个数组新增一个checked属性
+						this.shoplost.forEach((value,index)=>{
+							if (typeof value.checked=='undefined') {
+								this.$set(value,'checked',!flag);
+							}else{
+								value.checked=!flag;
+							}
+						})
+						this.counttotalprice();
+				},
+				//计算选中商品总价
+				counttotalprice(){
+					let totalprice=0;
+					this.shoplost.forEach((value,index)=>{
+						//选中的商品才会计入总价内
+						if (value.checked) {
+							totalprice+=value.shopnum*value.shopprice;
+						}
+					})
+					this.totalprice=totalprice;
+				},
+				//实现单选
+				singelselect(shop){
+					if(shop.checked=='undefined'){
+						this.$set(shop,'checked',true);
+					}else{
+						shop.checked=!shop.checked;
+					}
+					this.counttotalprice();
+					this.hasselectall();
+				},
+				//判断是否全选
+				hasselectall(){
+					let flag=true;
+					this.shoplost.forEach((value,index)=>{
+						if(!value.checked){
+							flag=false;
+						}
+					})
+					this.isselectall=flag;
+				}
+			}
+		})
+
+	</script>
+</html>
